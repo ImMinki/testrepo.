@@ -4,7 +4,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="ko">
-    {% load staticfiles %}
+    {% load static %}
     <head>
         <meta charset="utf-8">
         <title>KUSE자세히보기</title>
@@ -27,9 +27,7 @@
                 <li class="nav-item">
                     <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">로그아웃</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'list' %}">돌아가기</a> 
-                </li>
+                
                 <!--로그아웃 버튼활성화-->
                 <form id="logout" method="POST" action="{% url 'logout' %}"> 
                     {% csrf_token %} <input type="hidden"/>
@@ -47,9 +45,12 @@
            <br>
            <hr>
 
-<h2> {{object.강의명}} </h2>
-<h3> Prof.{{object.교수명}} </h3>
+<h2> 강의명: {{object.강의명}} </h2>
+<h3> 교수명: {{object.교수명}} </h3>
+<h7> 최신 등록 날짜 : {{object.updated_at}} </h7>
 <br>
-<h4> 최신 등록 날짜 : {{object.updated_at}} </h4>
 <br><br>
-{{object.평가내용}}
+<h3>평가내용: {{object.평가내용}}</h3>
+
+<a class="nav-link" href="{% url 'list' %}">돌아가기</a>
+

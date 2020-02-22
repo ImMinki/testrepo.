@@ -4,7 +4,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="ko">
-    {% load staticfiles %}
+    {% load static %}
     <head>
         <meta charset="utf-8">
         <title>강의 평가</title>
@@ -57,20 +57,22 @@
             <hr>
 
             {%for blog in object_list%}
-            <div class="card text-center">
+            <div class="card text-left">
               <div class="card-header">
-                {{blog.교수명}}
+                <h4>{{blog.강의명}}</h4>
               </div>
               <div class="card-body">
-                <h5 class="card-title">{{blog.강의명}}</h5>
+                <h5 class="card-title">{{blog.교수명}}</h5>
                 <p class="card-text">{{blog.summary}}....</p><!--100자이상넘어가면 잘리게끔 하는기능-->
                 <a href="{% url 'detail' blog.id %}" class="card-link">자세히보기</a>
                 <a href="{% url 'change' blog.id %}" class="card-link">수정</a>
                 <a href="{% url 'del' blog.id %}" class="card-link">삭제</a>
               </div>
+              <div class = "card text-center">
               <div class="card-footer text-muted">
                 {{blog.updated_at}}
               </div>
+            </div>
             </div>
             <br><br>
             {%endfor%}
