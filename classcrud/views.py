@@ -11,9 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django_filters.views import FilterView
 from .models import ClassBlog
 from .models import EvalFilter
-from .models import Fuser
-from django.http import HttpResponse
-from django.contrib.auth.hashers import make_password
+
 
 # Create your views here.
 
@@ -32,7 +30,15 @@ def welcome(request):
 
 def signup(request):
     if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password1']
+        re_password = request.POST['password2']
 
+        res_data = {}
+
+        if not( username and password and re_password):
+            res_data['error'] = "모든 값을 입력해야합니다."
+            return render(request, 'classcrud/classblog_signup.html', res_data)
         # User has info and wants an account now!
         if request.POST['password1'] == request.POST['password2']:
             try:
