@@ -11,6 +11,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django_filters.views import FilterView
 from .models import ClassBlog
 from .models import EvalFilter
+from .models import Fuser
+from django.http import HttpResponse
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
@@ -29,6 +32,7 @@ def welcome(request):
 
 def signup(request):
     if request.method == 'POST':
+
         # User has info and wants an account now!
         if request.POST['password1'] == request.POST['password2']:
             try:
