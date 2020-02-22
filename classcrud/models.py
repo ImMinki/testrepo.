@@ -11,6 +11,9 @@ class ClassBlog(models.Model):
     def __str__(self):
         return self.강의명
 
+    def summary(self):
+        return self.평가내용[:100]
+
 class EvalFilter(django_filters.FilterSet):
     class Meta:
         model = ClassBlog

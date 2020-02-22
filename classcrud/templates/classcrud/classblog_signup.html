@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>KUSE회원가입</title> 
+    </head>
+    <div class="text-center">
+    <body>
+        {% if error %}
+        {{ error }}
+        <br>
+        {% endif %}
+        <br><br>
+        <h1>회원가입</h1>
+        <h3>아이디와 비밀번호를 작성해주세요.</h3><br>
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            Username:
+            <br>
+            <input name="username" type="text" value="">
+            <br>
+            Password:
+            <br>
+            <input name="password1" type="password" value="">
+            <br>
+            Confirm Password:
+            <br>
+            <input name="password2" type="password" value="">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="회원가입">
+            <a class="btn btn-primary"href="{% url 'welcome' %}">돌아가기 </a>  
+            <!--1.아이디패스워드패스워드확인란에 아무것도 안쓸시에 뜰수있는경고문-->
+        </form>
+          
+    </body>
+    </div>
+</html>
